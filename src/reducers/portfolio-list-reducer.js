@@ -1,18 +1,19 @@
 import * as c from './../actions/ActionTypes';
 
 export default (state = {}, action) => {
-  const { names, location, issue, id } = action;
+  const { name, projects, skills, bio, id } = action;
   switch(action.type) {
-  case c.ADD_TICKET:
+  case c.ADD_PORTFOLIO:
     return {...state,
         [id]: {
-        names,
-        location,
-        issue,
+        name,
+        projects,
+        skills, 
+        bio,
         id
       }
     } 
-  case c.DELETE_TICKET:
+  case c.DELETE_PORTFOLIO:
     let newState = { ...state };
     delete newState[id];
     return newState;

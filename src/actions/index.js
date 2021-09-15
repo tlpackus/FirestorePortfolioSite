@@ -1,16 +1,17 @@
 import * as c from './../actions/ActionTypes';
-export const deleteTicket = id => ({
-  type: c.DELETE_TICKET,
+export const deletePortfolio = id => ({
+  type: c.DELETE_PORTFOLIO,
   id
 });
 
-export const addTicket = (ticket) => {
-  const {names, location, issue, id } = ticket;
+export const addPortfolio = (portfolio) => {
+  const {name, projects, skills, bio, id } = portfolio;
   return {
-    type: c.ADD_TICKET,
-    names,
-    location,
-    issue,
+    type: c.ADD_PORTFOLIO,
+    name,
+    projects,
+    skills,
+    bio,
     id
   }
 }

@@ -3,18 +3,19 @@ import * as c from './../../actions/ActionTypes';
 
 
 describe('help queue actions', () => {
-  it('deleteTicket should create DELETE_TICKET action', () => {
-    expect(actions.deleteTicket(1)).toEqual({
-      type: c.DELETE_TICKET,
+  it('deletePortfolio should create DELETE_PORTFOLIO action', () => {
+    expect(actions.deletePortfolio(1)).toEqual({
+      type: c.DELETE_PORTFOLIO,
       id: 1
     });
   });
-  it('addTicket should create ADD_TICKET action', () => {
-    expect(actions.addTicket({names: 'Jo and Jasmine', location: '3E', issue: 'Redux not working!', id: 1})).toEqual({
-      type: c.ADD_TICKET,
-      names: 'Jo and Jasmine',
-      location: '3E',
-      issue: 'Redux not working!',
+  it('addPortfolio should create ADD_Portfolio action', () => {
+    expect(actions.addPortfolio({name: 'Jo', projects: 'noSQL database', skills: 'JavaScript', bio: 'cool', id: 1})).toEqual({
+      type: c.ADD_PORTFOLIO,
+      name: 'Jo',
+      projects: 'noSQL database',
+      skills: 'JavaScript', 
+      bio: 'cool',
       id: 1
     });
   });

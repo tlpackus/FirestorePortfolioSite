@@ -1,2 +1,2 @@
-export const ADD_TICKET = 'ADD_TICKET';
-export const DELETE_TICKET = 'DELETE_TICKET';
+export const ADD_PORTFOLIO = 'ADD_PORTFOLIO';
+export const DELETE_PORTFOLIO = 'DELETE_PORTFOLIO';

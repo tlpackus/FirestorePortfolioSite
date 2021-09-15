@@ -1,46 +1,49 @@
-import ticketListReducer from '../../reducers/ticket-list-reducer';
+import portfolioListReducer from '../../reducers/portfolio-list-reducer';
 import * as c from './../../actions/ActionTypes';
 
-describe('ticketListReducer', () => {
+describe('portfolioListReducer', () => {
 
   const currentState = {
     1: {
-      names: 'Ryan & Aimen',
-      location: '4b',
-      issue: 'Redux action is not working correctly.',
+      name: 'Jay',
+      projects: 'database',
+      skills: 'C#',
+      bio: "went to coding school",
       id: 1
     },
     2: {
-      names: 'Jasmine and Justine',
-      location: '2a',
-      issue: 'Reducer has side effects.',
+      name: 'Kinda Smart Guy',
+      projects: "E-commerce ",
+      skills: 'React',
+      bio: 'Self taught',
       id: 2
     }
   }
 
   let action;
-  const ticketData = {
-    names: 'Ryan & Aimen',
-    location: '4b',
-    issue: 'Redux action is not working correctly.',
+  const portfolioData = {
+    name: 'Jay',
+    projects: 'database',
+    skills: 'C#',
+    bio: "went to coding school",
     id: 1
   };
 
   test('Should return default state if there is no action type passed into the reducer', () => {
-    expect(ticketListReducer({}, { type: null })).toEqual({});
+    expect(portfolioListReducer({}, { type: null })).toEqual({});
   });
 
-  test('Should successfully add new ticket data to masterTicketList', () => {
-    const { names, location, issue, id } = ticketData;
+  test('Should successfully add new portfolio data to masterPortfolioList', () => {
+    const { names, location, issue, id } = portfolioData;
     action = {
-      type: c.ADD_TICKET,
+      type: c.ADD_PORTFOLIO,
       names,
       location,
       issue,
       id
     }
 
-    expect(ticketListReducer({}, action)).toEqual({
+    expect(portfolioListReducer({}, action)).toEqual({
       [id]: {
         names,
         location,
@@ -49,16 +52,17 @@ describe('ticketListReducer', () => {
       }
     });
   });
-  test('Should successfully delete a ticket', () => {
+  test('Should successfully delete a portfolio', () => {
     action = {
-      type: c.DELETE_TICKET,
+      type: c.DELETE_PORTFOLIO,
       id: 1
     };
-    expect(ticketListReducer(currentState, action)).toEqual({
+    expect(portfolioListReducer(currentState, action)).toEqual({
       2: {
-        names: 'Jasmine and Justine',
-        location: '2a',
-        issue: 'Reducer has side effects.',
+        name: 'Kinda Smart Guy',
+        projects: "E-commerce ",
+        skills: 'React',
+        bio: 'Self taught',
         id: 2 }
     });
   });
