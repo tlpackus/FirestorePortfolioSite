@@ -12,6 +12,13 @@ function EditTicketForm (props) {
 
   return (
     <React.Fragment>
+      <h2>Current Values</h2>
+      Names: {ticket.names}
+      <br />
+      Location: {ticket.location}
+      <br />
+      Issue: {ticket.issue}
+      <br />
       <ReusableForm 
         formSubmissionHandler={handleEditTicketFormSubmission}
         buttonText="Update Ticket" />

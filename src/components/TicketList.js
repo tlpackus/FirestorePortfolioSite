@@ -15,8 +15,6 @@ function TicketList(props) {
           id={ticket.id}
           key={ticket.id} />
       )}
-      {/* {props.ticketList.map((ticket) => */}
-
     </React.Fragment>
   );
 }

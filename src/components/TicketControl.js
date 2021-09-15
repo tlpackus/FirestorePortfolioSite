@@ -5,6 +5,7 @@ import TicketDetail from './TicketDetail';
 import EditTicketForm from './EditTicketForm';
 import { connect } from 'react-redux';
 import PropTypes from "prop-types";
+import * as a from './../actions';
 
 class TicketControl extends React.Component {
 
@@ -33,88 +34,54 @@ class TicketControl extends React.Component {
 
   handleAddingNewTicketToList = (newTicket) => {
     const { dispatch } = this.props;
-    const { id, names, location, issue } = newTicket;
-    const action = { 
-      type: 'ADD_TICKET',
-      id,
-      names,
-      location,
-      issue
-    }
+    const action = a.addTicket(newTicket);
     dispatch(action);
-    this.setState({formVisibleOnPage: false});
-    // const newMasterTicketList = this.state.masterTicketList.concat(newTicket);
-    // this.setState({
-    //   masterTicketList: newMasterTicketList,
-    //   formVisibleOnPage: false
-    // });
+    this.setState({ formVisibleOnPage: false });
+
   }
 
   handleChangingSelectedTicket = (id) => {
     const selectedTicket = this.props.masterTicketList[id];
-    // = this.state.masterTicketList.filter(ticket => ticket.id === id)[0];
-    this.setState({selectedTicket: selectedTicket});
+    this.setState({ selectedTicket: selectedTicket });
   }
 
   handleDeletingTicket = (id) => {
     const { dispatch } = this.props;
-    const action = {
-      type: 'DELETE_TICKET',
-      id: id
-    }
+    const action = a.deleteTicket(id);
+
     dispatch(action);
-    this.setState({selectedTicket: null});
-    // const newMasterTicketList = this.state.masterTicketList.filter(ticket => ticket.id !== id);
-    // this.setState({
-    //   masterTicketList: newMasterTicketList,
-    //   selectedTicket: null
-    // });
+    this.setState({ selectedTicket: null });
   }
 
   handleEditClick = () => {
-    this.setState({editing: true});
+    this.setState({ editing: true });
   }
 
   handleEditingTicketInList = (ticketToEdit) => {
     const { dispatch } = this.props;
-    const { id, names, location, issue } = ticketToEdit;
-    const action = {
-      type: 'ADD_TICKET',
-      id: id,
-      names: names,
-      location: location,
-      issue: issue,
-    }
+    const action = a.addTicket(ticketToEdit)
     dispatch(action);
     this.setState({
       editing: false,
       selectedTicket: null
     });
-    // const editedMasterTicketList = this.state.masterTicketList
-    //   .filter(ticket => ticket.id !== this.state.selectedTicket.id)
-    //   .concat(ticketToEdit);
-    // this.setState({
-    //   masterTicketList: editedMasterTicketList,
-    //   editing: false,
-    //   selectedTicket: null
-    // });
   }
 
-  render(){
+  render() {
     let currentlyVisibleState = null;
     let buttonText = null;
-    if (this.state.editing ) {      
-      currentlyVisibleState = <EditTicketForm ticket = {this.state.selectedTicket} onEditTicket = {this.handleEditingTicketInList} />
+    if (this.state.editing) {
+      currentlyVisibleState = <EditTicketForm ticket={this.state.selectedTicket} onEditTicket={this.handleEditingTicketInList} />
       buttonText = "Return to Ticket List";
     } else if (this.state.selectedTicket != null) {
-      currentlyVisibleState = 
-      <TicketDetail 
-        ticket = {this.state.selectedTicket} 
-        onClickingDelete = {this.handleDeletingTicket} 
-        onClickingEdit = {this.handleEditClick} />
+      currentlyVisibleState =
+        <TicketDetail
+          ticket={this.state.selectedTicket}
+          onClickingDelete={this.handleDeletingTicket}
+          onClickingEdit={this.handleEditClick} />
       buttonText = "Return to Ticket List";
     } else if (this.state.formVisibleOnPage) {
-      currentlyVisibleState = <NewTicketForm onNewTicketCreation={this.handleAddingNewTicketToList}  />;
+      currentlyVisibleState = <NewTicketForm onNewTicketCreation={this.handleAddingNewTicketToList} />;
       buttonText = "Return to Ticket List";
     } else {
       currentlyVisibleState = <TicketList ticketList={this.props.masterTicketList} onTicketSelection={this.handleChangingSelectedTicket} />;
