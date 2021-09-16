@@ -67,6 +67,13 @@ class PortfolioControl extends React.Component {
     });
   }
 
+  handleAddingSkillsToPortfolioInList = (portfolioToAddSkills) => {
+    const { dispatch } = this.props;
+    // const newPortfolio = portfolioToAddSkills.skills.push(newSkill)
+    const action = a.addPortfolio(portfolioToAddSkills)
+    dispatch(action);
+  }
+
   render() {
     let currentlyVisibleState = null;
     let buttonText = null;
@@ -78,7 +85,8 @@ class PortfolioControl extends React.Component {
         <PortfolioDetail
           portfolio={this.state.selectedPortfolio}
           onClickingDelete={this.handleDeletingPortfolio}
-          onClickingEdit={this.handleEditClick} />
+          onClickingEdit={this.handleEditClick}
+          onClickingAddSkill={this.handleAddingSkillsToPortfolioInList} />
       buttonText = "Return to Portfolio List";
     } else if (this.state.formVisibleOnPage) {
       currentlyVisibleState = <NewPortfolioForm onNewPortfolioCreation={this.handleAddingNewPortfolioToList} />;

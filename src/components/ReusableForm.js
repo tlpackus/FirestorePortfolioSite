@@ -9,14 +9,14 @@ function ReusableForm(props) {
           type='text'
           name='name'
           placeholder='User Name' />
-        <input
+        {/* <input
           type='text'
           name='projects'
           placeholder='Projects' />
         <input
           type='text'
           name='skills'
-          placeholder='Skills' />
+          placeholder='Skills' /> */}
         <textarea
           name='bio'
           placeholder='Bio' />

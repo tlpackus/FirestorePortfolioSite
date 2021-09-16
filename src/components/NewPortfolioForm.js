@@ -7,7 +7,7 @@ function NewPortfolioForm(props){
 
   function handleNewPortfolioFormSubmission(event) {
     event.preventDefault();
-    props.onNewPortfolioCreation({name: event.target.name.value, skills: event.target.skills.value, projects: event.target.projects.value, bio: event.target.bio.value, id: v4()});
+    props.onNewPortfolioCreation({name: event.target.name.value, bio: event.target.bio.value, id: v4()});
   }
 
   return (

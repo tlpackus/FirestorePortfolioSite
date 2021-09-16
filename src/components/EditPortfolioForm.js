@@ -15,11 +15,10 @@ function EditPortfolioForm (props) {
       <h2>Current Values</h2>
       name: {portfolio.name}
       <br />
-      projects: {portfolio.projects}
-      <br />
-      skills: {portfolio.skills}
-      <br />
       bio: {portfolio.bio}
+      <br />
+      <h2>New Values</h2>
+      <br />
       <ReusableForm 
         formSubmissionHandler={handleEditPortfolioFormSubmission}
         buttonText="Update Portfolio" />

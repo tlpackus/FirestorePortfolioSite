@@ -15,7 +15,7 @@ function Portfolio(props){
 Portfolio.propTypes = {
   name: PropTypes.string,
   projects: PropTypes.string,
-  skills: PropTypes.string,
+  skills: PropTypes.array,
   bio: PropTypes.string,
   id: PropTypes.string,
   whenPortfolioClicked: PropTypes.func
